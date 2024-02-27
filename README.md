@@ -2,19 +2,19 @@
 
 ## Criando Chaves
 ### Criar Chaves RS256 e transformar para `base64`
-```shell
+```bash
 ssh-keygen -t rsa -b 4096 -m PEM -f jwt.key
 openssl rsa -in jwt.key -pubout -outform PEM -out jwt.key.pub
 ```
 
 ### Criar arquivo `.env`
-```env
+```bash
 ACCESS_TOKEN_PRIVATE_KEY="private_key_base64"
 ACCESS_TOKEN_PUBLIC_KEY="public_key_base64"
 ```
 
 ## Utilização via Docker
-```shell
+```bash
 docker compose up -d
 ```
 
