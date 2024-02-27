@@ -11,11 +11,5 @@ services:
     environment:
       - PORT=3000
       - NODE_ENV=development
-      - REDIS_URI=redis://redis:6379
-  #   depends_on:
-  #     - redis
-  # redis:
-  #   container_name: authentication_redis
-  #   image: redis:latest
-  #   ports:
-  #     - "6379:6379"
+      - ACCESS_TOKEN_PRIVATE_KEY=
+      - ACCESS_TOKEN_PUBLIC_KEY=

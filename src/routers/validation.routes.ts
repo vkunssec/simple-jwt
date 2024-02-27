@@ -6,12 +6,13 @@ class HealthRouter {
 	public router: Router;
 	private readonly controller: ValidationController = new ValidationController();
 
-	constructor () {
+	constructor() {
 		this.router = Router();
 	}
 
 	public addRoute = (route = "/validation"): void => {
-		this.router.get(`${route}/private`, this.controller.privateRouter);
+		this.router.post(`${route}/create`, this.controller.createSession);
+		this.router.post(`${route}/verify`, this.controller.verifySession);
 	};
 }
 

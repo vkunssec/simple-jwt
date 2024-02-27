@@ -1,8 +1,8 @@
-FROM node:16-alpine as build
+FROM node:18-alpine as build
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json tsconfig.json ./
 
 RUN npm install && \
     npm cache clean --force
@@ -13,7 +13,7 @@ RUN npm run build
 
 RUN npm prune --production
 
-FROM node:16-alpine as deploy
+FROM node:18-alpine as deploy
 
 WORKDIR /app
 

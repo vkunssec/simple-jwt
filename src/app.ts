@@ -5,24 +5,27 @@ import helmet from "helmet";
 import { PORT } from "./config";
 
 class App {
-    readonly app: express.Application;
-    
-    constructor() {
-        this.app = express();
-    }
+	readonly app: express.Application;
 
-    public startServer(port: number | null): void {
-        const actualPort = PORT ?? port;
+	constructor() {
+		this.app = express();
+	}
 
-        this.app.listen(actualPort, () => console.log(`Listing port ${actualPort}`));
-    }
+	/* istanbul ignore next -- @preserve */
+	public startServer(port?: number): void {
+		const actualPort = process.env.NODE_ENV == "test" ? 0 : PORT ?? port;
 
-    public addRouter(router: Router): void {
-        this.app.use(express.json());
-        this.app.use(cors());
-        this.app.use(helmet());
-        this.app.use(router);
-    }
+		this.app.listen(actualPort, () => {
+			if (process.env.NODE_ENV !== "test") console.log(`Listing port ${actualPort}`);
+		});
+	}
+
+	public addRouter(router: Router): void {
+		this.app.use(express.json());
+		this.app.use(cors());
+		this.app.use(helmet());
+		this.app.use(router);
+	}
 }
 
 export default App;

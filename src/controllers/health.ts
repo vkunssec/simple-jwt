@@ -5,7 +5,7 @@ import headers from "../core/helpers/headers";
 import { HeathService } from "../services/health";
 
 export class HealthController {
-    private readonly service: HeathService = new HeathService();
+	private readonly service: HeathService = new HeathService();
 
 	readonly index = async (req: Request, res: Response): Promise<Response> => {
 		const response = await this.service.index();
