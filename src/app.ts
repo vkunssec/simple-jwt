@@ -3,6 +3,7 @@ import express, { Router } from "express";
 import helmet from "helmet";
 
 import { PORT } from "./config";
+import logger from "./core/utils/logger";
 
 class App {
 	readonly app: express.Application;
@@ -16,7 +17,7 @@ class App {
 		const actualPort = process.env.NODE_ENV == "test" ? 0 : PORT ?? port;
 
 		this.app.listen(actualPort, () => {
-			if (process.env.NODE_ENV !== "test") console.log(`Listing port ${actualPort}`);
+			if (process.env.NODE_ENV !== "test") logger.info(`Listing port ${actualPort}`);
 		});
 	}
 
