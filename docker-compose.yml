@@ -2,7 +2,7 @@ version: "3"
 
 services:
   api:
-    container_name: simples-jwt
+    container_name: simple-jwt
     build:
       dockerfile: Dockerfile
       context: .
