@@ -12,7 +12,7 @@
     "test": "npx vitest",
     "test:cov": "npx vitest run --coverage"
   },
-  "author": "Victor Martins <vkunssec@gmail.com>",
+  "author": "Victor Martins (https://github.com/vkunssec)",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
